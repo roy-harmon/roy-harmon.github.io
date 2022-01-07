@@ -8,7 +8,7 @@
 
 			{% capture historytext %}
 			{% for role in site.roles %}
-				<span aria-hidden="true">{{role.start}}</span>
+				<div style="visibility:hidden">{{role.start}}</div>
 				<div class="timeline">
 					<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{role.employer | replace: ' ', '_'}}-{{role.title | replace: ' ', '_'}}">
 						<span class="year">{{role.start}}</span>
@@ -21,7 +21,7 @@
 				{% if site.education %}::{% endif %}
 			{% endfor %}
 			{% for edu in site.education %}
-				<span aria-hidden="true">{{edu.date}}</span>
+				<div style="visibility:hidden">{{role.start}}</div>
 				<div class="timeline">
 					<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{edu.school | replace: '.', '' | replace: ' ', ''}}-{{edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}">
 						<span class="year">{{edu.date}}</span>
@@ -45,7 +45,7 @@
 			<!-- Modals -->
 			{% capture modaltext %}
 			{% for role in site.roles %}
-				<span aria-hidden="true">{{role.start}}</span>
+				<div style="visibility:hidden">{{role.start}}</div>
 				<div class="modal fade" id="{{role.employer | replace: ' ', '_'}}-{{role.title | replace: ' ', '_'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -64,7 +64,7 @@
 				{% if site.education %}::{% endif %}
 			{% endfor %}
 			{% for edu in site.education %}
-				<span aria-hidden="true">{{edu.date}}</span>
+				<div style="visibility:hidden">{{role.start}}</div>
 				<div class="modal fade" id="{{edu.school | replace: '.', '' | replace: ' ', ''}}-{{edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
