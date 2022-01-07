@@ -133,6 +133,7 @@ table {
 	color: #337ab7;
 	font-weight: bold;
 	padding-top: 15px;
+	text-transform: uppercase;
 }
 .content-rounded-panel {
 	padding-left:10px;
