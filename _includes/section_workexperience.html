@@ -7,9 +7,8 @@
 			<div class="main-timeline4">
 				{% capture historytext %}
 					{% for role in site.roles %}
-						<div {{-role.start-}}></div>
 						<div class="timeline">
-							<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{-role.employer | replace: ' ', '_'-}}-{{-role.title | replace: ' ', '_'-}}">
+							<a href="#" class="timeline-content {{-role.start-}}"  data-toggle="modal" data-target="#{{-role.employer | replace: ' ', '_'-}}-{{-role.title | replace: ' ', '_'-}}">
 								<span class="year">{{-role.start-}}</span>
 								<div class="inner-content">
 									<h3 class="title">{{-role.title-}}</h3>
@@ -21,9 +20,8 @@
 					{% endfor %}
 					{% if site.education %}::{% endif %}
 					{% for edu in site.education %}
-						<div {{-edu.date-}}></div>
 						<div class="timeline">
-							<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{-edu.school | replace: '.', '' | replace: ' ', ''-}}-{{-edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''-}}">
+							<a href="#" class="timeline-content {{-edu.date-}}"  data-toggle="modal" data-target="#{{-edu.school | replace: '.', '' | replace: ' ', ''-}}-{{-edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''-}}">
 								<span class="year">{{-edu.date-}}</span>
 								<div class="inner-content">
 									<h3 class="title">{{-edu.level-}}</h3>
@@ -36,20 +34,12 @@
 				{% endcapture %}
 				{% assign historyarray = historytext | split:'::' %}
 				{% assign historysorted = historyarray | sort | reverse %}
-				{% assign roleyears = site.roles | map: 'start' %}
-				{% assign educationyears = site.education.date | map: 'date' %}
-				{% assign years = roleyears | concat: educationyears | uniq %}
-				{% for year in years %}
-					{% assign trimmer = historysorted | replace: '<div {{year}}></div>', '' %}
-					{% assign historysorted = trimmer %}
-				{% endfor %}
 				{{historysorted}}
 			</div>
 			<!-- Modals -->
 			{% capture modaltext %}
 			{% for role in site.roles %}
-				<div {{-role.start-}}></div>
-				<div class="modal fade" id="{{-role.employer | replace: ' ', '_'-}}-{{-role.title | replace: ' ', '_'-}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade {{-role.start-}}" id="{{-role.employer | replace: ' ', '_'-}}-{{-role.title | replace: ' ', '_'-}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -68,8 +58,7 @@
 			{% endfor %}
 			{% if site.education %}::{% endif %}
 			{% for edu in site.education %}
-				<div {{-edu.date-}}></div>
-				<div class="modal fade" id="{{-edu.school | replace: '.', '' | replace: ' ', ''-}}-{{-edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''-}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade {{-edu.date-}}" id="{{-edu.school | replace: '.', '' | replace: ' ', ''-}}-{{-edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''-}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -89,10 +78,6 @@
 			{% endcapture %}
 			{% assign modalarray = modaltext | split:'::' %}
 			{% assign modalsorted = modalarray | sort | reverse %}
-			{% for year in years %}
-				{% assign trimmer = modalsorted | replace: '<div {{year}}></div>', '' %}
-				{% assign modalsorted = trimmer %}
-			{% endfor %}
 			{{-modalsorted-}}
 		</div>
 		<br>
