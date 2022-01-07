@@ -64,7 +64,7 @@
 				{% if site.education %}::{% endif %}
 			{% endfor %}
 			{% for edu in site.education %}
-				<div style="visibility:hidden">{{role.start}}</div>
+				<div style="visibility:hidden">{{edu.date}}</div>
 				<div class="modal fade" id="{{edu.school | replace: '.', '' | replace: ' ', ''}}-{{edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
