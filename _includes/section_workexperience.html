@@ -5,71 +5,39 @@
 	<div class="content-rounded-panel">
 		<div>
 			<div class="main-timeline4">
-				{% assign history = site.roles | concat: site.education %}
-				{% assign history.year = history.start | concat: history.date %}
-				{% history | sort: 'year' | reverse %}
-					{% for exp in history %}
-						{% if exp.employer %}
-						<div class="timeline">
-								<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{exp.employer | replace: ' ', '_'}}-{{exp.title | replace: ' ', '_'}}">
-										<span class="year">{{exp.start}}</span>
-										<div class="inner-content">
-												<h3 class="title">{{exp.title}}</h3>
-												<h5>{{exp.employer}}</h5>
-										</div>
-								</a>
-						</div>
-						{% elseif exp.school %}
-						<div class="timeline">
-								<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{exp.school | replace: '.', '' | replace: ' ', ''}}-{{exp.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}">
-										<span class="year">{{exp.date}}</span>
-										<div class="inner-content">
-												<h3 class="title">{{exp.level}}</h3>
-												<h5>{{exp.subject}}</h5>
-										</div>
-								</a>
-						</div>
-					{% endfor %}
-			</div>
 
-		</div>
-
-			<!-- Modals 
+			{% capture historytext %}
+			<!-- Modals -->
 			{% for role in site.roles %}
-				<div class="modal fade" id="{{role.employer | replace: ' ', '_'}}-{{role.title | replace: ' ', '_'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h3 class="modal-title">{{role.title}} - {{role.employer}}</h3>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								{{role.description}}
-							</div>
+				<span aria-hidden="true">{{role.start}}</span>
+				<div class="timeline">
+					<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{role.employer | replace: ' ', '_'}}-{{role.title | replace: ' ', '_'}}">
+						<span class="year">{{role.start}}</span>
+						<div class="inner-content">
+							<h3 class="title">{{role.title}}</h3>
+							<h5>{{role.employer}}</h5>
 						</div>
-					</div>
+					</a>
 				</div>
+				{% if site.education %}::{% endif %}
 			{% endfor %}
 			{% for edu in site.education %}
-				<div class="modal fade" id="{{edu.school | replace: '.', '' | replace: ' ', ''}}-{{edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h3 class="modal-title">{{edu.level}} - {{edu.school}}</h3>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								{{edu.subject}}
-							</div>
+				<span aria-hidden="true">{{edu.date}}</span>
+				<div class="timeline">
+					<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{edu.school | replace: '.', '' | replace: ' ', ''}}-{{edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}">
+						<span class="year">{{edu.date}}</span>
+						<div class="inner-content">
+							<h3 class="title">{{edu.level}}</h3>
+							<h5>{{edu.subject}}</h5>
 						</div>
-					</div>
+					</a>
 				</div>
+				{% unless forloop.last %}::{% endunless%}
 			{% endfor %}
--->
+			{% endcapture %}
+			{% assign historyarray = historytext | split:'::' %}
+			{% assign historysorted = historyarray | sort | reverse %}
+			{{historysorted}}
 		<br>
 	</div>
 </div>
