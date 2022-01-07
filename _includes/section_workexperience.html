@@ -5,25 +5,27 @@
 	<div class="content-rounded-panel">
 		<div>
 			<div class="main-timeline4">
-
-					{% for role in site.roles %}
+				{% assign history = site.roles | site.education %}
+				{% assign history.year = history.start | history.date %}
+				{% history | sort: 'year' | reverse %}
+					{% for exp in history %}
+						{% if exp.employer %}
 						<div class="timeline">
-								<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{role.employer | replace: ' ', '_'}}-{{role.title | replace: ' ', '_'}}">
-										<span class="year">{{role.start}}</span>
+								<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{exp.employer | replace: ' ', '_'}}-{{exp.title | replace: ' ', '_'}}">
+										<span class="year">{{exp.start}}</span>
 										<div class="inner-content">
-												<h3 class="title">{{role.title}}</h3>
-												<h5>{{role.employer}}</h5>
+												<h3 class="title">{{exp.title}}</h3>
+												<h5>{{exp.employer}}</h5>
 										</div>
 								</a>
 						</div>
-					{% endfor %}
-					{% for edu in site.education %}
+						{% elseif exp.school %}
 						<div class="timeline">
-								<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{edu.school | replace: '.', '' | replace: ' ', ''}}-{{edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}">
-										<span class="year">{{edu.date}}</span>
+								<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{exp.school | replace: '.', '' | replace: ' ', ''}}-{{exp.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}">
+										<span class="year">{{exp.date}}</span>
 										<div class="inner-content">
-												<h3 class="title">{{edu.level}}</h3>
-												<h5>{{edu.subject}}</h5>
+												<h3 class="title">{{exp.level}}</h3>
+												<h5>{{exp.subject}}</h5>
 										</div>
 								</a>
 						</div>
@@ -31,7 +33,7 @@
 			</div>
 
 
-			<!-- Modals -->
+			<!-- Modals 
 			{% for role in site.roles %}
 				<div class="modal fade" id="{{role.employer | replace: ' ', '_'}}-{{role.title | replace: ' ', '_'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
@@ -67,7 +69,7 @@
 				</div>
 			{% endfor %}
 
-		</div>
+		</div>-->
 		<br>
 	</div>
 </div>
