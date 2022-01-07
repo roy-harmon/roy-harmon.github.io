@@ -33,7 +33,7 @@
 					{% endfor %}
 				{% endcapture %}
 				{% assign historyarray = historytext | split:'::' %}
-				{% assign historysorted = historyarray | sort | reverse %}
+				{% assign historysorted = historyarray | sort %}
 				{{historysorted}}
 			</div>
 			<!-- Modals -->
@@ -77,7 +77,7 @@
 			{% endfor %}
 			{% endcapture %}
 			{% assign modalarray = modaltext | split:'::' %}
-			{% assign modalsorted = modalarray | sort | reverse %}
+			{% assign modalsorted = modalarray | sort %}
 			{{modalsorted}}
 		</div>
 		<br>
