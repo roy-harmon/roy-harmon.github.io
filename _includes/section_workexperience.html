@@ -5,9 +5,8 @@
 	<div class="content-rounded-panel">
 		<div>
 			<div class="main-timeline4">
-				{% assign history = site.roles | site.education %}
+				{% assign history = site.roles | concat: site.education %}
 				
-			<!-- Modals 
 				{% for exp in history %}
 					{% if exp.start %}
 						{% assign exp.year = exp.start %}
@@ -40,8 +39,9 @@
 					{% endfor %}
 			</div>
 
-		</div>-->
+		</div>
 
+			<!-- Modals 
 			{% for role in site.roles %}
 				<div class="modal fade" id="{{role.employer | replace: ' ', '_'}}-{{role.title | replace: ' ', '_'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
@@ -76,7 +76,7 @@
 					</div>
 				</div>
 			{% endfor %}
-
+-->
 		<br>
 	</div>
 </div>
