@@ -130,8 +130,8 @@ table {
     border-top-right-radius: 5px;
 }
 .top-rounded-panel h1{
-	color: #ff3500;
-	font-weight: 300;
+	color: #337ab7;
+	font-weight: bold;
 	padding-top: 15px;
 }
 .content-rounded-panel {
