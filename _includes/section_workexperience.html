@@ -6,7 +6,13 @@
 		<div>
 			<div class="main-timeline4">
 				{% assign history = site.roles | site.education %}
-				{% assign history.year = history.start | history.date %}
+				{% for exp in history %}
+					{% if exp.start %}
+						{% assign exp.year = exp.start %}
+					{% elseif exp.date %}
+						{% assign exp.year = exp.date %}
+					{% endif %}
+				{% endfor %}
 				{% history | sort: 'year' | reverse %}
 					{% for exp in history %}
 						{% if exp.employer %}
