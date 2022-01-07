@@ -34,7 +34,7 @@
 						{% unless forloop.last %}::{% endunless%}
 					{% endfor %}
 				{% endcapture %}
-				{% assign historyarray = historytext | split:'::' %}
+				{% assign historyarray = historytext | split:'::' | strip %}
 				{% assign historysorted = historyarray | sort | reverse %}
 				{{-historysorted-}}
 			</div>
@@ -80,7 +80,7 @@
 				{% unless forloop.last %}::{% endunless%}
 			{% endfor %}
 			{% endcapture %}
-			{% assign modalarray = modaltext | split:'::' %}
+			{% assign modalarray = modaltext | split:'::' | strip %}
 			{% assign modalsorted = modalarray | sort | reverse %}
 			{{-modalsorted-}}
 		</div>
