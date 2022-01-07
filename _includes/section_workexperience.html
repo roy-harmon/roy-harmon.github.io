@@ -8,7 +8,7 @@
 
 			{% capture historytext %}
 			{% for role in site.roles %}
-				<div style="visibility:hidden">{{role.start}}</div>
+				<div class="{{role.start}}"></div>
 				<div class="timeline">
 					<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{role.employer | replace: ' ', '_'}}-{{role.title | replace: ' ', '_'}}">
 						<span class="year">{{role.start}}</span>
@@ -18,10 +18,11 @@
 						</div>
 					</a>
 				</div>
-				{% if site.education %}::{% endif %}
+				{% unless forloop.last %}::{% endunless%}
 			{% endfor %}
+			{% if site.education %}::{% endif %}
 			{% for edu in site.education %}
-				<div style="visibility:hidden">{{edu.date}}</div>
+				<div class="{{edu.date}}"></div>
 				<div class="timeline">
 					<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{edu.school | replace: '.', '' | replace: ' ', ''}}-{{edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}">
 						<span class="year">{{edu.date}}</span>
@@ -45,7 +46,7 @@
 			<!-- Modals -->
 			{% capture modaltext %}
 			{% for role in site.roles %}
-				<div style="visibility:hidden">{{role.start}}</div>
+				<div class="{{role.start}}"></div>
 				<div class="modal fade" id="{{role.employer | replace: ' ', '_'}}-{{role.title | replace: ' ', '_'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -61,10 +62,11 @@
 						</div>
 					</div>
 				</div>
-				{% if site.education %}::{% endif %}
+				{% unless forloop.last %}::{% endunless%}
 			{% endfor %}
+			{% if site.education %}::{% endif %}
 			{% for edu in site.education %}
-				<div style="visibility:hidden">{{edu.date}}</div>
+				<div class="{{edu.date}}"></div>
 				<div class="modal fade" id="{{edu.school | replace: '.', '' | replace: ' ', ''}}-{{edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
