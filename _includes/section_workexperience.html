@@ -8,11 +8,11 @@
 				{% capture historytext %}
 					{% for role in site.roles %}
 						<div class="timeline">
-							<a href="#" class="timeline-content {{-role.start-}}"  data-toggle="modal" data-target="#{{-role.employer | replace: ' ', '_'-}}-{{-role.title | replace: ' ', '_'-}}">
-								<span class="year">{{-role.start-}}</span>
+							<a href="#" class="timeline-content {{role.start}}"  data-toggle="modal" data-target="#{{role.employer | replace: ' ', '_'}}-{{role.title | replace: ' ', '_'}}">
+								<span class="year">{{role.start}}</span>
 								<div class="inner-content">
-									<h3 class="title">{{-role.title-}}</h3>
-									<h5>{{-role.employer-}}</h5>
+									<h3 class="title">{{role.title}}</h3>
+									<h5>{{role.employer}}</h5>
 								</div>
 							</a>
 						</div>
@@ -21,11 +21,11 @@
 					{% if site.education %}::{% endif %}
 					{% for edu in site.education %}
 						<div class="timeline">
-							<a href="#" class="timeline-content {{-edu.date-}}"  data-toggle="modal" data-target="#{{-edu.school | replace: '.', '' | replace: ' ', ''-}}-{{-edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''-}}">
-								<span class="year">{{-edu.date-}}</span>
+							<a href="#" class="timeline-content {{edu.date}}"  data-toggle="modal" data-target="#{{edu.school | replace: '.', '' | replace: ' ', ''}}-{{edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}">
+								<span class="year">{{edu.date}}</span>
 								<div class="inner-content">
-									<h3 class="title">{{-edu.level-}}</h3>
-									<h5>{{-edu.subject-}}</h5>
+									<h3 class="title">{{edu.level}}</h3>
+									<h5>{{edu.subject}}</h5>
 								</div>
 							</a>
 						</div>
@@ -39,17 +39,17 @@
 			<!-- Modals -->
 			{% capture modaltext %}
 			{% for role in site.roles %}
-				<div class="modal fade {{-role.start-}}" id="{{-role.employer | replace: ' ', '_'-}}-{{-role.title | replace: ' ', '_'-}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade {{role.start}}" id="{{role.employer | replace: ' ', '_'}}-{{role.title | replace: ' ', '_'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h3 class="modal-title">{{-role.title-}} - {{-role.employer-}}</h3>
+								<h3 class="modal-title">{{role.title}} - {{role.employer}}</h3>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
-								{{-role.description-}}
+								{{role.description}}
 							</div>
 						</div>
 					</div>
@@ -58,17 +58,17 @@
 			{% endfor %}
 			{% if site.education %}::{% endif %}
 			{% for edu in site.education %}
-				<div class="modal fade {{-edu.date-}}" id="{{-edu.school | replace: '.', '' | replace: ' ', ''-}}-{{-edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''-}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade {{edu.date}}" id="{{edu.school | replace: '.', '' | replace: ' ', ''}}-{{edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h3 class="modal-title">{{-edu.level-}} - {{-edu.school-}}</h3>
+								<h3 class="modal-title">{{edu.level}} - {{edu.school}}</h3>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
-								{{-edu.subject-}}
+								{{edu.subject}}
 							</div>
 						</div>
 					</div>
@@ -78,7 +78,7 @@
 			{% endcapture %}
 			{% assign modalarray = modaltext | split:'::' %}
 			{% assign modalsorted = modalarray | sort | reverse %}
-			{{-modalsorted-}}
+			{{modalsorted}}
 		</div>
 		<br>
 	</div>
