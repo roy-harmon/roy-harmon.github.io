@@ -21,7 +21,7 @@
 				{% if site.education %}::{% endif %}
 			{% endfor %}
 			{% for edu in site.education %}
-				<div style="visibility:hidden">{{role.start}}</div>
+				<div style="visibility:hidden">{{edu.date}}</div>
 				<div class="timeline">
 					<a href="#" class="timeline-content"  data-toggle="modal" data-target="#{{edu.school | replace: '.', '' | replace: ' ', ''}}-{{edu.level | replace: '.', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''}}">
 						<span class="year">{{edu.date}}</span>
