@@ -21,7 +21,7 @@
 .label-padded {
 	padding: 5px;
 	line-height: 28px;
-	display: inline list-item;
+	display: ruby-base;
 }
 .label-info, .badge-info {
 	background-color: #005985;
