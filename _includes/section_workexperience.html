@@ -39,12 +39,10 @@
 				{% assign roleyears = site.roles | map: 'start' %}
 				{% assign educationyears = site.education.date | map: 'date' %}
 				{% assign years = roleyears | concat: educationyears | uniq %}
-				{% capture yeartrim %}
 				{% for year in years %}
-				replace: '<div class="{{year}}"></div>', '' {% unless forloop.last %}| {% endunless %}
+					{% assign historysorted = {{-historysorted-}} | replace: '<div class="{{year}}"></div>', '' %}
 				{% endfor %}
-				{% endcapture %}
-				{{-historysorted | {{yeartrim}}-}}
+				{{historysorted}}
 			</div>
 			<!-- Modals -->
 			{% capture modaltext %}
