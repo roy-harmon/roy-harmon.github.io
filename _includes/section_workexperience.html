@@ -6,14 +6,7 @@
 		<div>
 			<div class="main-timeline4">
 				{% assign history = site.roles | concat: site.education %}
-				
-				{% for exp in history %}
-					{% if exp.start %}
-						{% assign exp.year = exp.start %}
-					{% elseif exp.date %}
-						{% assign exp.year = exp.date %}
-					{% endif %}
-				{% endfor %}
+				{% assign history.year = history.start | concat: history.date %}
 				{% history | sort: 'year' | reverse %}
 					{% for exp in history %}
 						{% if exp.employer %}
