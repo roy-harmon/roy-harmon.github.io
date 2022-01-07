@@ -40,7 +40,8 @@
 				{% assign educationyears = site.education.date | map: 'date' %}
 				{% assign years = roleyears | concat: educationyears | uniq %}
 				{% for year in years %}
-					{% assign historysorted = {{-historysorted-}} | replace: '<div class="{{year}}"></div>', '' %}
+					{% assign trimmer = historysorted | replace: '<div class="{{year}}"></div>', '' %}
+					{% assign historysorted = trimmer %}
 				{% endfor %}
 				{{historysorted}}
 			</div>
